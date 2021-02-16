@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BL.Rentas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +13,16 @@ namespace Win.Rentas
 {
     public partial class FormLogin : Form
     {
+        SeguridadBL _seguridad;
         string usuario = "Rosa";
-        string contra = "123";
+        string contra = "123"; 
+ 
 
         public FormLogin()
         {
             InitializeComponent();
+
+            _seguridad = new SeguridadBL();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -27,9 +32,11 @@ namespace Win.Rentas
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var resultado = _seguridad.Autorizar(usuario, contra);
             if ((textBox1.Text != usuario || textBox2.Text != contra))
             {
-                if (textBox1.Text != usuario)
+                if (resultado == true)
+               
                 {
                     MessageBox.Show("Usuario Incorrecto");
                     textBox1.Clear();
@@ -48,7 +55,7 @@ namespace Win.Rentas
             {
                 textBox1.Clear();
                 textBox2.Clear();
-                MessageBox.Show("Bienvenido, usuario de J&J Fashion Store");
+                MessageBox.Show("Bienvenido, usuario de Airline");
                 FormMenu Form = new FormMenu();
                 Form.ShowDialog();
 

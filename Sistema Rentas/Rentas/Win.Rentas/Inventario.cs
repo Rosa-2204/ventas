@@ -1,5 +1,4 @@
-﻿using BL.Rentas;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,17 +10,11 @@ using System.Windows.Forms;
 
 namespace Win.Rentas
 {
-    public partial class FormProductos : Form
-
+    public partial class Inventario : Form
     {
-        VueloBL _vuelo;
-
-        public FormProductos()
+        public Inventario()
         {
             InitializeComponent();
-
-            _vuelo = new VueloBL();
-            listaVueloBindingSource.DataSource = _vuelo.ObtenerVuelo();
         }
     }
 }
