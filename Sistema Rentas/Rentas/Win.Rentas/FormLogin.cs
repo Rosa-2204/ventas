@@ -55,7 +55,7 @@ namespace Win.Rentas
             {
                 textBox1.Clear();
                 textBox2.Clear();
-                MessageBox.Show("Bienvenido, usuario de Airline");
+                MessageBox.Show("Bienvenido, usuario de ENLI Airline");
                 FormMenu Form = new FormMenu();
                 Form.ShowDialog();
 
