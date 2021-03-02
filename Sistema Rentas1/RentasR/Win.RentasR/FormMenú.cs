@@ -8,21 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Win.Rentas1
+namespace Win.RentasR
 {
-    public partial class FormMenú1 : Form
+    public partial class FormMenú : Form
     {
-        public FormMenú1()
+        public FormMenú()
         {
             InitializeComponent();
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void vUELOToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
@@ -33,20 +33,19 @@ namespace Win.Rentas1
         }
 
         private void Login()
-       
         {
             var formLogin = new FormLogin();
             formLogin.ShowDialog();
         }
 
-        private void RegistrarVueloToolStripMenuItem_Click(object sender, EventArgs e)
+        private void registrarVueloToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var formRegistrarVuelo = new FormRegistrarVuelo();
             formRegistrarVuelo.MdiParent = this;
             formRegistrarVuelo.Show();
         }
 
-        private void FormMenú1_Load(object sender, EventArgs e)
+        private void FormMenú_Load(object sender, EventArgs e)
         {
             Login();
         }

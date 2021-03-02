@@ -1,20 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{03B18E2A-5D7A-4BD4-952F-ADDC7174C3A5}</ProjectGuid>
+    <ProjectGuid>{7B624800-CA4C-4993-983E-F5F4930A802E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Win.Rentas1</RootNamespace>
-    <AssemblyName>Win.Rentas1</AssemblyName>
+    <RootNamespace>Win.RentasR</RootNamespace>
+    <AssemblyName>Win.RentasR</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -37,11 +34,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -72,28 +69,28 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMenú1.cs">
+    <Compile Include="FormMenú.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMenú1.Designer.cs">
-      <DependentUpon>FormMenú1.cs</DependentUpon>
+    <Compile Include="FormMenú.Designer.cs">
+      <DependentUpon>FormMenú.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FormRegistrarVuelo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormRegistrarVuelo.Designer.cs">
       <DependentUpon>FormRegistrarVuelo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMenú1.resx">
-      <DependentUpon>FormMenú1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormRegistrarVuelo.resx">
       <DependentUpon>FormRegistrarVuelo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMenú.resx">
+      <DependentUpon>FormMenú.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -106,9 +103,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\BL.Rentas.RegistrarVuelo.datasource" />
-    <None Include="Properties\DataSources\BL.Rentas.Registrar_VueloBL.datasource" />
-    <None Include="Properties\DataSources\BL.Rentas.SeguridadBL.datasource" />
+    <None Include="Properties\DataSources\BL.RentasR.RegistrarVuelo.datasource" />
+    <None Include="Properties\DataSources\BL.RentasR.RegistrarVueloBL.datasource" />
+    <None Include="Properties\DataSources\BL.RentasR.SeguridadBL.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -120,23 +117,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\por-que-los-aviones-comerciales-no-llevan-paracaidas-para-casos-de-emergencia.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BL.Rentas\BL.Rentas.csproj">
-      <Project>{44381298-bfbe-494b-b23b-fae1cb6e4296}</Project>
-      <Name>BL.Rentas</Name>
+    <None Include="Resources\por-que-los-aviones-comerciales-no-llevan-paracaidas-para-casos-de-emergencia1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BL.RentasR\BL.RentasR.csproj">
+      <Project>{413deab2-b61a-4662-b91f-ff79db42099c}</Project>
+      <Name>BL.RentasR</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
-  </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

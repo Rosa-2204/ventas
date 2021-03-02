@@ -1,4 +1,4 @@
-﻿using BL.Rentas;
+﻿using BL.RentasR;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,18 +9,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Win.Rentas1
+namespace Win.RentasR
 {
     public partial class FormRegistrarVuelo : Form
     {
-        Registrar_VueloBL _vuelos;
+        RegistrarVueloBL _vuelos;
 
         public FormRegistrarVuelo()
         {
             InitializeComponent();
 
-            _vuelos = new Registrar_VueloBL();
+            _vuelos = new RegistrarVueloBL();
             listaRegistrarVueloBindingSource.DataSource = _vuelos.ObtenerRegistrarVuelo();
+        }
+
+        private void FormRegistrarVuelo_Load(object sender, EventArgs e)
+        {
+            listaRegistrarVueloBindingSource.EndEdit();
+            var vuelo = (RegistrarVuelo)listaRegistrarVueloBindingSource.Current;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void listaRegistrarVueloBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -28,7 +39,7 @@ namespace Win.Rentas1
             listaRegistrarVueloBindingSource.EndEdit();
             var vuelo = (RegistrarVuelo)listaRegistrarVueloBindingSource.Current;
 
-            var resultado = _vuelos.GuardarVuelo(vuelo);
+            var resultado = _vuelos.GuardarRegistrarVuelo(vuelo);
 
             if (resultado.Exitoso == true)
             {
@@ -39,11 +50,12 @@ namespace Win.Rentas1
             {
                 MessageBox.Show(resultado.Mensaje);
             }
+
         }
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            _vuelos.AgregarVuelo();
+            _vuelos.AgregrarVuelo();
             listaRegistrarVueloBindingSource.MoveLast();
 
             DeshabilitarHabilitarBotones(false);
@@ -65,16 +77,15 @@ namespace Win.Rentas1
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
             
-
             if (idVueloTextBox.Text != "")
             {
-                var resultado = MessageBox.Show("Desea eliminar este registro?", "Eliminar", MessageBoxButtons.YesNo);
-                if (resultado == DialogResult.Yes)
+               var resultado = MessageBox.Show("Desea eliminar este registro?", "Eliminar", MessageBoxButtons.YesNo);
+               if (resultado == DialogResult.Yes)
+
                 {
                     var Id = Convert.ToInt32(idVueloTextBox.Text);
                     Eliminar(Id);
                 }
- 
             }
         }
 
@@ -92,7 +103,7 @@ namespace Win.Rentas1
             }
         }
 
-        private void toolStripButtonCancelar_Click(object sender, EventArgs e)
+        private void toolStripButton_Click(object sender, EventArgs e)
         {
             DeshabilitarHabilitarBotones(true);
             Eliminar(0);

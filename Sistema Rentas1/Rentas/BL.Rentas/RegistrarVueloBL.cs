@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,48 +10,20 @@ namespace BL.Rentas
 {
     public class Registrar_VueloBL
     {
+        Contexto _contexto;
         public BindingList<RegistrarVuelo> ListaRegistrarVuelo { get; set; }
 
         public Registrar_VueloBL()
         {
-            ListaRegistrarVuelo = new BindingList<RegistrarVuelo>();
-
-            var RegistrarVuelo1 = new RegistrarVuelo();
-            RegistrarVuelo1.IdVuelo = 123;
-            RegistrarVuelo1.Clase = "Económica";
-            RegistrarVuelo1.Horasdevuelo = 12;
-            RegistrarVuelo1.Ciudaddeorigen = "San Pedro Sula";
-            RegistrarVuelo1.Destino = "Houston,Texas";
-            RegistrarVuelo1.FechadeVuelo = new DateTime(2021, 01, 20);
-            RegistrarVuelo1.Activo = true;
-
-            ListaRegistrarVuelo.Add(RegistrarVuelo1);
-
-            var RegistrarVuelo2 = new RegistrarVuelo();
-            RegistrarVuelo2.IdVuelo = 456;
-            RegistrarVuelo2.Clase = "VIP";
-            RegistrarVuelo2.Horasdevuelo = 16;
-            RegistrarVuelo2.Ciudaddeorigen = "Tegucigalpa";
-            RegistrarVuelo2.Destino = "España";
-            RegistrarVuelo2.FechadeVuelo = new DateTime(2021, 2, 25);
-            RegistrarVuelo2.Activo = true;
-
-            ListaRegistrarVuelo.Add(RegistrarVuelo2);
-
-            var RegistrarVuelo3 = new RegistrarVuelo();
-            RegistrarVuelo3.IdVuelo = 789;
-            RegistrarVuelo3.Clase = "VIP";
-            RegistrarVuelo3.Horasdevuelo = 12;
-            RegistrarVuelo3.Ciudaddeorigen = "San Pedro Sula";
-            RegistrarVuelo3.Destino = "California";
-            RegistrarVuelo3.FechadeVuelo = new DateTime(2021, 2, 15);
-            RegistrarVuelo3.Activo = true;
-
-            ListaRegistrarVuelo.Add(RegistrarVuelo3);
+            _contexto = new Contexto();
+            ListaRegistrarVuelo = new BindingList<RegistrarVuelo>();  
         }
 
-        public BindingList<RegistrarVuelo> ObtenerRegistarVuelo()
+        public BindingList<RegistrarVuelo> ObtenerRegistrarVuelo()
         {
+            _contexto.Vuelos.Load();
+            ListaRegistrarVuelo = _contexto.Vuelos.Local.ToBindingList();
+
             return ListaRegistrarVuelo;
         }
 
